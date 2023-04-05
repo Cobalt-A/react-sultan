@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { productSlice } from '../store/reducer/products';
-import {ITags} from '../types/types'
-import axios from 'axios'
+import jsontags from '../db/tags.json'
 
 function TagsMenu() {
 
     const {filterByTags} = useAppSelector(state => state.productReducer)
     const {setFilterByTags} = productSlice.actions
     const dispatch = useAppDispatch()
-
-    const [tags, setTags] = useState<ITags[]>([])
-
-    async function fetchTags() {
-		try {
-			const res = await axios.get<ITags[]>('/db/tags.json')
-			setTags(res.data)
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-	useEffect(() => {
-		fetchTags()
-	})
 
     function toggleTagFilter(event: React.MouseEvent) {
         if (filterByTags.find((el) => Number((event.target as HTMLButtonElement).getAttribute('datatype')) === el.id)) {
@@ -42,19 +25,15 @@ function TagsMenu() {
         dispatch(setFilterByTags(array))
     }
 
-    document.querySelectorAll('.tags-menu__tag').forEach(button => {
-        if (filterByTags.find((el) => Number((button as HTMLButtonElement).getAttribute('datatype')) === el.id)) {
-            (button as HTMLButtonElement).style.color = '#FEC85C'
-            return
-        }
-        (button as HTMLButtonElement).removeAttribute('style')
-    })
-
 	return (
         <ul className='tags-menu'>
-            {tags.map(tag =>
+            {jsontags.map(tag =>
             <li key={tag.id} className='tags-menu__item'>
-                <button dangerouslySetInnerHTML={{__html: tag.name}} datatype={String(tag.id)} onClick={toggleTagFilter} className='tags-menu__tag' ></button>
+                <button
+                    dangerouslySetInnerHTML={{__html: tag.name}}
+                    datatype={String(tag.id)} onClick={toggleTagFilter}
+                    className={(filterByTags.find((el) => tag.id === el.id)) ? 'tags-menu__tag tags-menu__tag-active' : 'tags-menu__tag'}
+                ></button>
             </li>
             )}
         </ul>

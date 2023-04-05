@@ -35,9 +35,6 @@ function CatalogsProduct({products}: IProducts) {
     }
 
 
-    
-
-
 	return (
 
         <div className='row'>
@@ -52,7 +49,7 @@ function CatalogsProduct({products}: IProducts) {
                             <img className='product__volume-icon' src={product.volumeIcon} alt="" />{product.volume}
                         </p>
                         <Link to={'/product/' + product.id} className='product__text'>
-                            <span className='product__title'>{product.brend}</span> {product.title}
+                            {/* <span className='product__title'>{product.brend}</span>*/}{product.title}
                         </Link>
                         <p className='product__barcode product__description'>Штрихкод: <span>{product.barcode}</span></p>
                         <p className='product__manufacturer product__description'>Производитель: <span>{product.manufacturer}</span></p>

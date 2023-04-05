@@ -1,61 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Sidebar from '../components/sidebar';
 import CatalogsProducts from '../components/catalogsProducts'
 import TagsMenu from '../components/tagsMenu';
 import {IProduct} from '../types/types'
-import axios from 'axios'
-import { useAppSelector } from '../hooks/redux';
+import { useAppSelector, useAppDispatch } from '../hooks/redux';
+import { productSlice } from '../store/reducer/products';
 import Breadcrumbs from '../components/breadcrumbs'
+import data from '../db/products.json';
 
 function Catalog() {
 
-	const {filterByPrice, filterByTags, filterByBrand} = useAppSelector(state => state.productReducer)
+	const {filterByPrice, filterByTags, filterByBrand, sortType, mobileSidebarDropDown} = useAppSelector(state => state.productReducer)
+	const {setSortType, setMobileSidebarDropDown} = productSlice.actions
+    const dispatch = useAppDispatch()
 
-	const [products, setProducts] = useState<IProduct[]>([])
 	const [isShow, setShow] = useState<boolean>(false)
-	const [sorting, setSorting] = useState<string | null>('sortByName')
-	const [sortName, setsortName] = useState<string>('Название по возростанию')
-	const [dropDownIcon, setDropDownIcon] = useState<string>('/assets/images/Vector 24 2.svg')
 	const ref = useRef<HTMLUListElement>(null)
 	const mobileRef = useRef<HTMLUListElement>(null)
 	const buttonRef = useRef<HTMLButtonElement>(null)
 	const mobileButtonRef = useRef<HTMLButtonElement>(null)
-	const sidebarRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		fetchProducts()
+	const sortedArray = sortProducts(sortType.type, (data as unknown as IProduct[]))
+	const filtredArray = brandFilter(tagsFilter(priceFilter(priceFilter((sortedArray)))))
 
-		const clickHandler = (event:MouseEvent) => {
+	const clickHandler = (event:MouseEvent) => {
 
-			if (mobileButtonRef.current?.contains(event.target as Node) || buttonRef.current?.contains(event.target as Node)) {
-				return
-			}
-
-			if (!ref.current?.contains(event.target as Node) && !mobileRef.current?.contains(event.target as Node)) {
-				setShow(false);
-				return
-			}
+		if (mobileButtonRef.current?.contains(event.target as Node) || buttonRef.current?.contains(event.target as Node)) {
+			return
 		}
 
-		document.addEventListener('mousedown', clickHandler)
-	})
-
-	
-	
-	async function fetchProducts() {
-		try {
-			const res = await axios.get<IProduct[]>('db/products.json')
-			const sortedArray = sortProducts(sorting, res.data)
-			const filteredByPrice = priceFilter(sortedArray)
-			const filterByTags = tagsFilter(filteredByPrice)
-			const filtredByBrand = brandFilter(filterByTags)
-
-			setProducts(filtredByBrand)
-		}
-		catch (error) {
-			console.error(error)
+		if (!ref.current?.contains(event.target as Node) && !mobileRef.current?.contains(event.target as Node)) {
+			setShow(false);
+			return
 		}
 	}
+
+	document.addEventListener('mousedown', clickHandler)
+
 
 	function toggleMenu() {
 		setShow(!isShow);
@@ -69,18 +50,21 @@ function Catalog() {
 			return data.sort((a, b) => (a.title > b.title ? -1 : 1))
 		}
 		if (sorting === 'sortByPrice') {
-			return data.sort((a, b) => (a.price < b.price ? -1 : 1))
+			return data.sort((a, b) => (Number(a.price) < Number(b.price) ? -1 : 1))
 		}
 		if (sorting === 'sortByPriceDown') {
-			return data.sort((a, b) => (a.price > b.price ? -1 : 1))
+			return data.sort((a, b) => (Number(a.price) > Number(b.price) ? -1 : 1))
 		}
-		return data.sort((a, b) => (a.title > b.title ? -1 : 1))
+		return data
 	}
 
 	function setSort(event:React.MouseEvent) {
-		const data = (event.target as HTMLButtonElement).getAttribute('datatype')
-		setSorting(data)
-		setsortName((event.target as HTMLButtonElement).innerHTML)
+		const type = (event.target as HTMLButtonElement).getAttribute('datatype')
+		const name = (event.target as HTMLButtonElement).innerHTML
+		dispatch(setSortType({
+			type: type,
+			name: name
+		}))
 		toggleMenu()
 	}
 
@@ -111,13 +95,11 @@ function Catalog() {
 	}
 
 	function toogleSidebar() {
-		if ((sidebarRef.current as HTMLDivElement).classList.contains('mobile-sidebar-wrapper-active')) {
-			(sidebarRef.current as HTMLDivElement).classList.remove('mobile-sidebar-wrapper-active')
-			setDropDownIcon('/assets/images/Vector 24 2.svg')
+		if (mobileSidebarDropDown) {
+			dispatch(setMobileSidebarDropDown(false))
 			return
 		}
-		(sidebarRef.current as HTMLDivElement).classList.add('mobile-sidebar-wrapper-active')
-		setDropDownIcon('/assets/images/Vector 24 (1).svg')
+		dispatch(setMobileSidebarDropDown(true))
 	}
 
 	return (
@@ -140,7 +122,7 @@ function Catalog() {
 								<div className="sort">
 									<div className="sort-block">
 										<p className='sort-block__title'>Сортировка:</p>
-										<button onClick={toggleMenu} ref={buttonRef} className='sort-block__btn'>{sortName}
+										<button onClick={toggleMenu} ref={buttonRef} className='sort-block__btn'>{sortType.name}
 											<img
 												className='sort-block__icon'
 												src={isShow ? '/assets/images/Polygon 4.svg' : '/assets/images/Polygon 5.svg'}
@@ -198,12 +180,14 @@ function Catalog() {
 					<div className="mobile-tags-title">
 						<h3 className='mobile-tags-title__title'>ПОДБОР ПО ПАРАМЕТРАМ</h3>
 						<button onClick={toogleSidebar} className='mobile-tags-title__btn'>
-							<img src={dropDownIcon} alt="" />
+							<img src={mobileSidebarDropDown ? '/assets/images/Vector 24 (1).svg' : '/assets/images/Vector 24 2.svg'} alt="" />
 						</button>
 					</div>
 
-					<div ref={sidebarRef} className="mobile-sidebar-wrapper">
-						<Sidebar />
+					<div className={mobileSidebarDropDown ? 'mobile-sidebar-wrapper mobile-sidebar-wrapper-active' : 'mobile-sidebar-wrapper'}>
+						{mobileSidebarDropDown &&
+							<Sidebar />
+						}
 					</div>
 
 				</div>
@@ -216,7 +200,7 @@ function Catalog() {
 					<div className="sort-block">
 						<p className='sort-block__title'>Сортировка:</p>
 						<button ref={mobileButtonRef} onClick={toggleMenu} className='sort-block__btn'>
-							{sortName}
+							{sortType.name}
 							<img
 								className='sort-block__icon'
 								src={isShow ? '/assets/images/Polygon 4.svg' : '/assets/images/Polygon 5.svg'}
@@ -261,7 +245,7 @@ function Catalog() {
 
 							<div className="content">
 
-								<CatalogsProducts products={products} />
+								<CatalogsProducts products={filtredArray} />
 
 							</div>
 

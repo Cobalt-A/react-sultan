@@ -1,36 +1,19 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import TagsMenu from './tagsMenu';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { productSlice } from '../store/reducer/products';
 import {IBrands} from '../types/types'
-import axios from 'axios'
+import jsonbrands from '../db/brands.json'
 
 function Sidebar() {
 
-    const {filterByPrice, filterByBrand} = useAppSelector(state => state.productReducer)
-    const {setFilterByPrice, setFilterByBrand} = productSlice.actions
+    const {filterByPrice, filterByBrand, brandDropDown} = useAppSelector(state => state.productReducer)
+    const {setFilterByPrice, setFilterByBrand, setBrandDropDown} = productSlice.actions
     const dispatch = useAppDispatch()
 
-    const [brands, setBrands] = useState<IBrands[]>([])
-    const [brandDropDownIcon, setBrandDropDownIcon] = useState<string>('/assets/images/Polygon 5.svg')
     const [findBrand, setFindBrand] = useState<string>('')
-    const brandMenu = useRef<HTMLUListElement>(null)
 
-    async function fetchBrands() {
-		try {
-			const res = await axios.get<IBrands[]>('/db/brands.json')
-            const filtredBrands = findBrandFilter(res.data)
-            setBrands(filtredBrands)
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-	useEffect(() => {
-		fetchBrands()
-	})
-
+    const findedBrands = findBrandFilter(jsonbrands)
 
     function maxPriceInput(event:ChangeEvent<HTMLInputElement>) {
         
@@ -73,23 +56,13 @@ function Sidebar() {
         setFindBrand((event.target as HTMLInputElement).value.trim().toLowerCase())
     }
 
-    function showAllBrands(event: React.MouseEvent) {
-        if ((brandMenu.current as HTMLUListElement).classList.contains('manufacturer-menu-active')) {
-            (brandMenu.current as HTMLUListElement).classList.remove('manufacturer-menu-active')
-            setBrandDropDownIcon('/assets/images/Polygon 5.svg')
+    function showAllBrands() {
+        if (brandDropDown) {
+            dispatch(setBrandDropDown(false))
             return
         }
-        (brandMenu.current as HTMLUListElement).classList.add('manufacturer-menu-active')
-        setBrandDropDownIcon('/assets/images/Polygon 4.svg')
+        dispatch(setBrandDropDown(true))
     }
-
-    document.querySelectorAll('.manufacturer-menu__checkbox').forEach(button => {
-        if (filterByBrand.find((el) => Number((button as HTMLButtonElement).getAttribute('datatype')) === el)) {
-            (button as HTMLInputElement).checked = true;
-            return
-        }
-        (button as HTMLInputElement).checked = false;
-    })
 
 	return (
 		<aside className='sidebar'>
@@ -113,19 +86,25 @@ function Sidebar() {
                         <img src={require('../assets/images/akar-icons_search.svg').default} alt="" />
                     </button>
                 </div>
-                <ul ref={brandMenu} className='manufacturer-menu'>
-                    {brands.map(brand =>
+                <ul className={brandDropDown ? 'manufacturer-menu manufacturer-menu-active' : 'manufacturer-menu'}>
+                    {findedBrands.map(brand =>
                     <li key={brand.id} className='manufacturer-menu__item'>
                         <label className='manufacturer-menu__label'>
-                            <input datatype={String(brand.id)} onChange={togleBrandFilter} className='manufacturer-menu__checkbox' type="checkbox" />
+                            <input 
+                                datatype={String(brand.id)}
+                                onChange={togleBrandFilter}
+                                className='manufacturer-menu__checkbox'
+                                type="checkbox"
+                                checked={(filterByBrand.find((el) => brand.id === el)) ? true : false}
+                            />
                             <p className='manufacturer-menu__title'>{brand.name} <span>({brand.products})</span></p>
                         </label>
                     </li>
                     )}
                 </ul>
-                {(brands.length > 5) &&
+                {(findedBrands.length > 5) &&
                 <button onClick={showAllBrands} className='manufacturer-menu-btn'>
-                    Показать все<img className='manufacturer-menu-btn__icon' src={brandDropDownIcon} alt="" />
+                    Показать все<img className='manufacturer-menu-btn__icon' src={brandDropDown ? '/assets/images/Polygon 4.svg' : '/assets/images/Polygon 5.svg'} alt="" />
                 </button>
                 }
             </div>

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import {IProduct, ITags} from '../types/types'
-import axios from 'axios'
+import React from 'react';
 import {useParams} from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { productSlice } from '../store/reducer/products';
 import Breadcrumbs from '../components/breadcrumbs'
+import { IProduct } from '../types/types';
+import jsonproduct from '../db/products.json'
+import jsontags from '../db/tags.json'
 
 function Product() {
 
@@ -13,41 +14,10 @@ function Product() {
     const dispatch = useAppDispatch()
 
     const { id } = useParams()
-    const [product, setProduct] = useState<IProduct | undefined>()
-    const [productTags, setProductTags] = useState<ITags[]>()
 
-    async function fetchProduct() {
-		try {
-			const res = await axios.get<IProduct[]>('/db/products.json')
-
-            const productById = res.data.filter(el => el.id === Number(id))
-
-            if (!productById.length) {
-                setProduct(undefined)
-            }
-
-			setProduct(productById[0])
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-    async function fetchTags() {
-		try {
-			const res = await axios.get<ITags[]>('/db/tags.json')
-            const data = res.data.filter(el => el.id === product?.tags.find(tag => tag === el.id))
-			setProductTags(data)
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-    useEffect(() => {
-		fetchProduct()
-        fetchTags()
-	})
+    const product = (jsonproduct as unknown as IProduct[]).filter(el => el.id === Number(id))[0]
+    const productTags = jsontags.filter(el => el.id === product?.tags.find(tag => tag === el.id))
+    
     
     function addOrder() {
         const array = Array.from(orders)
@@ -68,6 +38,28 @@ function Product() {
 
                 {!product &&
                     <Breadcrumbs pages={[{name: 'Каталог', route: '/', isActive: false}]} />
+                }
+
+                {!product &&
+                <section className='page-top'>
+
+                    <div className="container">
+
+                        <div className="row">
+
+                            <div className="col-lg-12">
+
+                                <h1 className='page-title'>
+                                    Такого товара не существует
+                                </h1>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
                 }
 
                 {product &&
@@ -94,7 +86,13 @@ function Product() {
 
                                 <div className="product-info">
 
-                                    <p className='product-info__stock'>В наличии</p>
+                                    {product.inStock &&
+                                        <p className='product-info__stock'>В наличии</p>
+                                    }
+                                    
+                                    {!product.inStock &&
+                                        <p style={{color: 'red'}} className='product-info__stock'>Нет в наличии</p>
+                                    }
 
                                     <p className='product-info__title'><strong>{product.brend}</strong> {product.title}</p>
 

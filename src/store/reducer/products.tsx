@@ -1,42 +1,40 @@
-import {IProduct} from '../../types/types'
 import { createSlice } from '@reduxjs/toolkit'
+
 
 interface IfilterByPrice {
     min: number
     max: number
 }
 
+interface ISortType {
+    type: string
+    name: string
+}
+
 interface ProductState {
-    products: IProduct[]
-    isLoading: false
-    error: string
-    count: number,
     filterByPrice: IfilterByPrice
     filterByTags: any[]
     filterByBrand: any[]
-    orders: any[],
-    ordersPrice: number
+    orders: any[]
+    sortType: ISortType
+    brandDropDown: boolean
+    mobileSidebarDropDown: boolean
 }
 
 const initialState: ProductState = {
-    products: [],
-    isLoading: false,
-    error: '',
-    count: 0,
     filterByPrice: {min: 0, max: 10000},
     filterByTags: [],
     filterByBrand: [],
     orders: [],
-    ordersPrice: 0
+    sortType: {type: 'sortByName', name: 'Название по возростанию'},
+    brandDropDown: false,
+    mobileSidebarDropDown: false
 }
 
 export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        increment(state, action) {
-            state.count += action.payload
-        },
         setFilterByPrice(state, action) {
             state.filterByPrice = action.payload
         },
@@ -48,6 +46,15 @@ export const productSlice = createSlice({
         },
         setOrder(state, action) {
             state.orders = action.payload
+        },
+        setSortType(state, action) {
+            state.sortType = action.payload
+        },
+        setBrandDropDown(state, action) {
+            state.brandDropDown = action.payload
+        },
+        setMobileSidebarDropDown(state, action) {
+            state.mobileSidebarDropDown = action.payload
         }
     }
 })

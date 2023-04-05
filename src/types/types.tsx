@@ -12,6 +12,7 @@ export interface IProduct {
     currency: string;
     tags: number[];
     brand: number[];
+    inStock: boolean
 }
 
 export interface IBrands {

@@ -1,32 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from "react-router-dom"
 import { useAppSelector } from '../hooks/redux';
-import {IProduct} from '../types/types'
-import axios from 'axios'
+import jsonproducts from '../db/products.json'
 
 function Header() {
 
 	const {orders} = useAppSelector(state => state.productReducer)
 
-	const [productOrders, setProductOrders] = useState<IProduct[]>([])
-
-	async function fetchProducts() {
-		try {
-			const res = await axios.get<IProduct[]>('/db/products.json')
-
-            const productByOrders = res.data.filter(el => orders.find(order => Number(order) === el.id))
-
-			setProductOrders(productByOrders)
-
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-	useEffect(() => {
-		fetchProducts()
-	})
+	const productOrders = jsonproducts.filter(el => orders.find(order => Number(order) === el.id))
 
 	function getPrice() {
 		let summ: number = 0

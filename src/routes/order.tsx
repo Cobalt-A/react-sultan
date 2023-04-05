@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Link } from "react-router-dom"
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
 import { productSlice } from '../store/reducer/products';
-import {IProduct} from '../types/types'
-import axios from 'axios'
 import Breadcrumbs from '../components/breadcrumbs'
+import jsonproducts from '../db/products.json'
 
 function Order() {
 
@@ -12,26 +11,9 @@ function Order() {
     const {setOrder} = productSlice.actions
     const dispatch = useAppDispatch()
 
-	const [productOrders, setProductOrders] = useState<IProduct[] | undefined>()
 	const [isOrderConfirm, setIsOrderConfirm] = useState<boolean>(false)
 
-	async function fetchProducts() {
-		try {
-			const res = await axios.get<IProduct[]>('/db/products.json')
-
-            const productByOrders = res.data.filter(el => orders.find(order => Number(order) === el.id))
-
-			setProductOrders(productByOrders)
-
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-
-	useEffect(() => {
-		fetchProducts()
-	})
+	const productOrders = jsonproducts.filter(el => orders.find(order => Number(order) === el.id))
 
 	function addOrder(event: React.MouseEvent) {
 		const id = (event.target as HTMLButtonElement).getAttribute('datatype')
