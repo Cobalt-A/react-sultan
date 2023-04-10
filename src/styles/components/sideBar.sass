@@ -1,0 +1,203 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+    
+.sidebar
+    padding-right: 70px
+    margin-bottom: 35px
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 150%
+        color: #111111
+        margin-bottom: 10px
+
+
+.price-filter
+    margin-bottom: 30px
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 300
+        font-size: 14px
+        line-height: 150%
+        color: #3F4E65
+        margin-bottom: 16px
+        span
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 500
+            font-size: 14px
+            line-height: 150%
+            color: #111111
+    &__row
+        display: flex
+        justify-content: space-between
+
+    &__input
+        width: 100px
+        height: 23px
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%)
+        border-radius: 1000px
+        text-align: center
+        display: flex
+        justify-content: center
+        align-items: center
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 300
+        font-size: 12px
+        line-height: 15px
+        color: #3F4E65
+        
+    &__input::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0
+
+
+
+
+.manufacturer-filter
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 150%
+        color: #111111
+        margin-bottom: 15px
+
+    &__input-container
+        position: relative
+        display: flex
+        align-items: center
+        margin-bottom: 15px
+
+    &__input
+        height: 60px
+        background: #EDEDED
+        border-radius: 36px
+        width: 100%
+        padding: 0 20px
+
+    &__btn
+        position: absolute
+        right: 10px
+        width: 39px
+        height: 39px
+        background: #FFC85E
+        border-radius: 100%
+        border: none
+
+    .manufacturer-menu
+        transition: .3s     
+            
+        &__label
+            display: inline-flex
+            align-items: center
+            cursor: pointer
+        &__checkbox
+            width: 10px
+            height: 10px
+            border: 0.5px solid #3F4E65
+            border-radius: 1px
+            display: flex
+            align-items: center
+            justify-content: center
+            margin-right: 10px
+        &__checkbox::after
+            content: ''
+            display: block
+            position: relative
+            height: 6px
+            width: 6px
+            border-radius: 1px
+            background-color: #3f4e6500
+            transition: .3s
+        &__checkbox:checked::after
+            background-color: #3F4E65
+            
+        &__title
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 400
+            font-size: 14px
+            line-height: 150%
+            color: #3F4E65
+            span
+                font-size: 10px
+
+    .manufacturer-menu-btn
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 12px
+        line-height: 150%
+        color: #3F4E65
+        margin-top: 15px
+        display: inline-block
+        border: none
+        background: none
+        &__icon
+            margin-left: 5px
+
+.manufacturer-menu
+    .manufacturer-menu__item:nth-child(n+5)
+        display: none        
+
+.manufacturer-menu-active
+    .manufacturer-menu__item:nth-child(n+5)
+        display: block !important
+
+.show-block
+    display: flex
+    justify-content: space-between
+    margin-top: 25px
+    margin-bottom: 40px
+    &__show-btn
+        width: calc(100% - 70px)
+
+    &__delete-btn
+        width: 60px
+        height: 60px
+        border-radius: 100%
+        background: $accent
+        border: none
+
+
+.tags-filter
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 150%
+        text-transform: uppercase
+        color: #111111
+    .tags-menu
+        margin-top: 15px
+
+        &__item
+            margin-bottom: 10px
+
+        &__tag
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 400
+            font-size: 14px
+            line-height: 150%
+            color: #3F4E65
+            border: none
+            background-color: #fff
+            padding: 0
+            &:hover
+                color: #3F4E65
+
+        &__tag-active
+            color: $accent !important
+        
+        br
+            display: none

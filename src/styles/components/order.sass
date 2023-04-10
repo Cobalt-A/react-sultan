@@ -1,0 +1,135 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+
+.order-list
+    margin-top: 50px
+
+.order
+    padding: 50px 0
+    border-top: 1px dashed #3f4e6538
+    &:last-child
+        border-bottom: 1px dashed #3f4e6538
+
+    &__separator
+        height: 100%
+        width: 0
+        border-right: 1px dashed #3f4e6538
+
+    &__volume
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 400
+        font-size: 12px
+        line-height: 130%
+        color: #3F4E65
+        display: flex
+        align-items: center
+
+    &__volume-icon
+        opacity: 0.23
+        margin-right: 5px
+
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 30px
+        line-height: 36px
+        color: #111111
+        margin-top: 10px
+        display: inline-block
+        max-width: 480px
+        &:hover
+            color: #111111
+
+    &__description
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 300
+        font-size: 12px
+        line-height: 150%
+        color: #3F4E65
+        margin-top: 10px
+        max-width: 450px
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+        justify-content: center
+        height: 100%
+
+    &__row
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding-left: 90px
+
+.order-amount
+    display: flex
+
+
+.order-img-block
+    display: flex
+    align-items: center
+    justify-content: center
+    img
+        height: 191px
+        width: auto
+
+.order-amount
+    display: flex
+    align-items: center
+    width: 113px
+    justify-content: space-between
+    &__btn
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 300
+        font-size: 12px
+        line-height: 15px
+        text-align: center
+        color: #3F4E65
+        width: 34px
+        height: 23px
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%)
+        border-radius: 1000px
+        border: none
+
+.order-price
+    &__price
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 30px
+        line-height: 130%
+        color: #111111
+        word-break: break-word
+
+.order-delete
+    &__btn
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 60px
+        height: 60px
+        background: $accent
+        border-radius: 100%
+        border: none
+
+
+.order-bottom
+    margin-top: 50px
+    &__container
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+    .order-price
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 30px
+        line-height: 130%
+        color: #111111

@@ -1,0 +1,84 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+    
+.tags
+    margin-top: 25px
+    .tags-menu
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        &__tag
+            padding: 18px 15px
+            margin-left: 11px
+            background: #FFFFFF
+            box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04)
+            border-radius: 10px
+            display: inline-block
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 400
+            font-size: 14px
+            line-height: 17px
+            text-align: center
+            color: #3F4E65
+            border: none
+            &:hover
+                color: #3F4E65
+
+        &__tag-active
+            color: $accent !important
+
+
+.mobile-tags
+    margin-top: 15px
+
+    .mobile-sidebar-wrapper
+        display: none
+
+    .mobile-sidebar-wrapper-active
+        display: block
+
+    .mobile-tags-title
+        display: flex
+        align-items: center
+        justify-content: space-between
+        &__title
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 500
+            font-size: 16px
+            line-height: 150%
+            color: #111111
+        &__btn
+            background: #ffc9657d
+            border-radius: 100%
+            width: 32px
+            height: 32px
+            display: flex
+            align-items: center
+            justify-content: center
+            border: none
+
+    .tags-menu
+        margin-top: 20px
+        margin-bottom: 25px
+        &__item
+            margin-bottom: 10px
+        &__tag
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 400
+            font-size: 14px
+            line-height: 17px
+            color: #3F4E65
+            background-color: #fff
+            border: none
+            padding: 0
+            &:hover
+                color: #3F4E65
+        &__tag-active
+            color: $accent !important
+        br
+            display: none

@@ -1,0 +1,106 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+    
+    
+.product
+    background: #FFFFFF
+    box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06)
+    border-radius: 10px
+    padding: 42px 25px 30px
+    height: 100%
+    position: relative
+    padding-bottom: 75px
+    &__img-block
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 194px
+        overflow: hidden
+        img
+            height: 194px
+            width: auto
+
+    &__volume
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 400
+        font-size: 12px
+        line-height: 130%
+        color: #3F4E65
+        display: flex
+        align-items: center
+
+    &__volume-icon
+        opacity: 0.23
+        margin-right: 8px
+
+    &__text
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 600
+        font-size: 16px
+        line-height: 130%
+        color: #111111
+        margin-top: 10px
+        margin-bottom: 20px
+        display: inline-block
+        span
+            font-weight: 700
+        &:hover
+            color: #111111
+
+    &__description
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 300
+        font-size: 14px
+        line-height: 150%
+        color: #3F4E65
+        margin-bottom: 5px
+        span
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 500
+            font-size: 14px
+            line-height: 150%
+            color: #111111
+
+    &__row
+        display: flex
+        align-items: center
+        justify-content: space-between
+        position: absolute
+        bottom: 30px
+        width: calc( 100% - 50px )
+
+    &__price
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 800
+        font-size: 16px
+        line-height: 130%
+        color: #111111
+
+    &__order-btn
+        background-color: $accent
+        padding: 9px 25px
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 10px
+        line-height: 12px
+        letter-spacing: 0.15em
+        color: #FFFFFF
+        border: none
+        border-radius: 80px
+        transition: .3s
+        &:disabled
+            opacity: 0.7
+    
+    &__order-icon
+        margin-left: 5px
+
+.product-col
+    margin-bottom: 20px

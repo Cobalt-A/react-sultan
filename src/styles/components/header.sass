@@ -1,0 +1,262 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+    
+#header
+
+    .upper-header
+        border-bottom: 1px solid #3f4e6538
+
+    .upper-header-col
+        display: flex
+        align-items: center
+        min-height: 60px
+        flex-wrap: wrap
+
+    .info-block
+        display: flex
+        align-items: center
+        margin-right: 40px
+        margin-top: 15px
+        margin-bottom: 15px
+
+        &__icon
+            margin-right: 16px
+
+        &__title
+            font-family: 'Inter'
+            font-weight: 600
+            font-size: 14px
+            color: $dark
+            line-height: 18px
+
+            span
+                color: $grey
+                font-weight: 500
+
+    .nav
+        width: 100%
+        justify-content: flex-end
+        &__ul
+            display: flex
+            align-items: center
+            flex-wrap: wrap
+            justify-content: space-around
+        &__item
+            display: flex
+            align-items: center
+            padding: 10px 30px
+        &__item:first-child
+            margin-left: 0
+        &__link
+            font-weight: 400
+            font-size: 14px
+            color: #3F4E65
+
+    .bottom-header
+        border-bottom: 1px solid #3f4e6538
+
+    .bottom-header-row
+        display: flex
+        flex-wrap: wrap
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        height: 107px
+
+        .input-block
+            position: relative
+            display: flex
+            align-items: center
+            &__input
+                background: #EDEDED
+                height: 60px
+                width: 260px
+                border-radius: 36px
+                padding: 0 20px
+                font-family: 'Inter'
+                font-style: normal
+                font-weight: 400
+                font-size: 12px
+                line-height: 150%
+                color: #5C6370
+
+            &__btn
+                position: absolute
+                right: 10px
+                background: #FFC85E
+                border-radius: 100%
+                width: 39px
+                height: 39px
+                display: flex
+                align-items: center
+                justify-content: center
+                border: none
+        
+        .work-time-block
+            display: flex
+            align-items: center
+            &__content
+                font-family: 'Inter'
+                font-style: normal
+                font-weight: 600
+                font-size: 14px
+                line-height: 150%
+                color: #111111
+                span
+                    font-family: 'Inter'
+                    font-style: normal
+                    font-weight: 300
+                    font-size: 12px
+                    line-height: 150%
+                    color: #3F4E65
+            &__link
+                font-family: 'Inter'
+                font-style: normal
+                font-weight: 400
+                font-size: 10px
+                line-height: 150%
+                text-decoration-line: underline
+                color: #3F4E65
+
+        .order-block
+            display: flex
+
+            &__icon
+                position: relative
+            &__counter
+                position: absolute
+                top: 0
+                right: -5px
+                border-radius: 100%
+                width: 22px
+                height: 22px
+                display: flex
+                align-items: center
+                justify-content: center
+                background: #FFC85E
+                color: #fff
+                border: 2px solid #fff
+            &__content
+                margin-left: 14px
+                font-family: 'Inter'
+                font-style: normal
+                font-weight: 300
+                font-size: 12px
+                line-height: 150%
+                color: #3F4E65
+                span
+                    font-family: 'Inter'
+                    font-style: normal
+                    font-weight: 600
+                    font-size: 14px
+                    line-height: 150%
+                    color: #111111
+
+    .mobbile-upper-header
+        border-bottom: 1px solid #3f4e6538
+
+    .mobbile-upper-header-row
+        display: flex
+        justify-content: space-between
+        align-items: center
+        height: 60px
+
+        .hamburger-block
+            height: 32px
+            width: 32px
+            background-color: $accent
+            border-radius: 100%
+            display: flex
+            align-items: center
+            justify-content: center
+            border: none
+
+            &__line
+                width: 8px
+                height: 2px
+                background-color: #fff
+                position: relative
+            &__line::after
+                content: ''
+                display: block
+                position: absolute
+                top: -3px
+                height: 2px
+                width: 100%
+                background-color: #fff
+            &__line::before
+                content: ''
+                display: block
+                position: absolute
+                bottom: -3px
+                height: 2px
+                width: 100%
+                background-color: #fff
+
+        .logo-block
+            &__img
+                height: 41px
+                width: auto
+
+        .order-block
+            position: relative
+            margin-right: 10px
+            &__icon
+                height: 22px
+                width: auto
+            &__counter
+                position: absolute
+                top: -10px
+                right: -15px
+                border-radius: 100%
+                width: 22px
+                height: 22px
+                display: flex
+                align-items: center
+                justify-content: center
+                background: #FFC85E
+                color: #fff
+                border: 2px solid #fff
+                font-size: 10px
+
+    
+    .mobbile-bottom-header
+        border-bottom: 1px solid #3f4e6538
+
+    .mobbile-bottom-header-row
+        display: flex
+        height: 40px
+        padding: 5px 0
+
+        .catalog-btn
+            display: flex
+            width: 50%
+            align-items: center
+            justify-content: center
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 600
+            font-size: 12px
+            line-height: 15px
+            color: #3F4E65
+            border-right: 1px dashed #3f4e6538
+            &__icon
+                margin-right: 6px
+
+        .search-btn
+            display: flex
+            width: 50%
+            align-items: center
+            justify-content: center
+            background-color: #fff
+            border: none
+            font-family: 'Inter'
+            font-style: normal
+            font-weight: 600
+            font-size: 12px
+            line-height: 15px
+            color: #3F4E65
+            &__icon
+                margin-right: 6px

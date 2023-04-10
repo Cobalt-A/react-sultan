@@ -1,0 +1,57 @@
+$dark: #111111
+$grey: #3F4E65
+$accent: #FFC85E
+$accent-dark: #F3A50D
+    
+.sort
+    position: relative
+
+    
+.sort-menu
+    position: absolute
+    top: 28px
+    background-color: #fff
+    border-radius: 10px
+    right: 0
+    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.151)
+    padding: 10px
+    z-index: 100
+    &__item
+        display: flex
+        justify-content: flex-end
+    &__btn
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 150%
+        color: #3F4E65
+        background-color: #fff
+        border: none
+
+.mobile-sort .sort-menu
+    right: auto
+    left: 0
+
+.sort-block
+    display: flex
+    align-items: center
+    position: relative
+    &__title
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 150%
+        color: #111111
+    &__btn
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 150%
+        color: #3F4E65
+        background-color: #fff
+        border: none
+    &__icon
+        margin-left: 5px
