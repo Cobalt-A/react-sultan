@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/header'
-import Footer from '../components/footer'
+import Header from '../sections/general/header'
+import Footer from '../sections/general/footer'
 
 import Catalog from '../routes/catalog'
 import Order from '../routes/order'

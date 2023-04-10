@@ -1,211 +1,38 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../hooks/redux';
-import { productSlice } from '../store/reducer/products';
-import Breadcrumbs from '../components/breadcrumbs'
+import Breadcrumbs from '../sections/general/breadcrumbs'
 import { IProduct } from '../types/types';
 import jsonproduct from '../db/products.json'
 import jsontags from '../db/tags.json'
+import ProductTop from '../sections/product/productTop';
+import ProductMain from '../sections/product/productMain';
 
 function Product() {
-
-    const {orders} = useAppSelector(state => state.productReducer)
-    const {setOrder} = productSlice.actions
-    const dispatch = useAppDispatch()
 
     const { id } = useParams()
 
     const product = (jsonproduct as unknown as IProduct[]).filter(el => el.id === Number(id))[0]
     const productTags = jsontags.filter(el => el.id === product?.tags.find(tag => tag === el.id))
-    
-    
-    function addOrder() {
-        const array = Array.from(orders)
-        array.push(id)
-        dispatch(setOrder(array))
-    }
-
-    function deleteOrder() {
-        const array = Array.from(orders)
-        array.splice(array.indexOf(id), 1)
-        dispatch(setOrder(array))
-    }
-
 
 	return (
 
-			<main id='main'>
+        <main id='main'>
 
-                {!product &&
+            {!product &&
+                <>
                     <Breadcrumbs pages={[{name: 'Каталог', route: '/', isActive: false}]} />
-                }
+                    <ProductTop />
+                </>
+            }
 
-                {!product &&
-                <section className='page-top'>
-
-                    <div className="container">
-
-                        <div className="row">
-
-                            <div className="col-lg-12">
-
-                                <h1 className='page-title'>
-                                    Такого товара не существует
-                                </h1>
-                                
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-                }
-
-                {product &&
+            {product &&
+                <>
                     <Breadcrumbs pages={[{name: 'Каталог', route: '/', isActive: false}, {name: product.title, route: '/product/'+id, isActive: true}]} />
-                }
+                    <ProductMain product={product} productTags={productTags} id={id} />
+                </>
+            }
 
-                {product &&
-
-                <section className='section-product'>
-
-                    <div className="container">
-
-                        <div className="row">
-
-                            <div className="col-lg-4 col-xl-6">
-
-                                <div className="product-img">
-                                    <img src={product.imgUrl} alt="" />
-                                </div>
-
-                            </div>
-
-                            <div className="col-lg-8 col-xl-6">
-
-                                <div className="product-info">
-
-                                    {product.inStock &&
-                                        <p className='product-info__stock'>В наличии</p>
-                                    }
-                                    
-                                    {!product.inStock &&
-                                        <p style={{color: 'red'}} className='product-info__stock'>Нет в наличии</p>
-                                    }
-
-                                    <p className='product-info__title'><strong>{product.brend}</strong> {product.title}</p>
-
-                                    <p className="product-info__mass"><img className='product-info__mass-icon' src={product.volumeIcon} alt="" />{product.volume}</p>
-
-                                    <div className="product-info__row">
-
-                                        <div className="product-price">
-											<p className='product-price__price'>{product.price} {product.currency}</p>
-										</div>
-
-                                        <div className="order-amount">
-											<button onClick={deleteOrder} className='order-amount__btn order-amount__decrease'>-</button>
-											<p className='order-amount__amount'>{orders.filter(el => el === id).length}</p>
-											<button onClick={addOrder} className='order-amount__btn order-amount__increase'>+</button>
-										</div>
-
-                                        <button onClick={addOrder} className='order-button'>
-                                            В корзину
-                                            <img className='order-button__icon' src={require('../assets/images/simple-line-icons_basket (1).svg').default} alt="" />
-                                        </button>
-
-                                        <button className="product-share">
-                                            <img src={require('../assets/images/ci_share.svg').default} alt="" />
-                                        </button>
-
-                                        <button className="product-promo">
-                                            При покупке от <strong>10 000 ₸</strong> бесплатная доставка по Кокчетаву и области
-                                        </button>
-
-                                        <button className="price-list">
-                                            Прайс-лист
-                                            <img className='price-list__icon' src={require('../assets/images/bx_bxs-download.svg').default} alt="" />
-                                        </button>
-
-                                    </div>
-
-                                    <div className="product-info__block">
-
-                                        <ul className='product-info-menu'>
-                                            {(productTags?.length !== 0) &&
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Тип: {productTags?.map(tag =>
-                                                    <span key={tag.id}>{tag.name.replace('<br/>', ' ') + ', '}</span> 
-                                                )}</p>
-                                            </li>
-                                            }
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Штрихкод: <span>{product.barcode}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Производитель: <span>{product.manufacturer}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Бренд: <span>{product.brend}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Артикул: <span>{product.barcode}</span></p>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-
-                                    <div className="product-description">
-                                        <button className='product-info-btn'>
-                                            Описание<img className='product-info-btn__icon' src={require('../assets/images/Polygon 4.svg').default} alt="" />
-                                        </button>
-                                        <p className='product-description-text'>
-                                            {product.description}
-                                        </p>
-                                    </div>
-
-                                    <hr />
-
-                                    <div className="product-info__block">
-
-                                        <button className='product-info-btn'>
-                                            Характеристики<img className='product-info-btn__icon' src={require('../assets/images/Polygon 4.svg').default} alt="" />
-                                        </button>
-
-                                        <ul className='product-info-menu'>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Бренд: <span>{product.barcode}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Артикул: <span>{product.barcode}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Штрихкод: <span>{product.barcode}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Объем: <span>{product.volume}</span></p>
-                                            </li>
-                                            <li className='product-info-menu__item'>
-                                                <p className='product-info-menu__title'>Кол-во в коробке: <span>1</span></p>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            
-                        </div>
-
-                    </div>
-
-                </section>
-
-                }
-
-			</main>
+        </main>
 	);
 }
 

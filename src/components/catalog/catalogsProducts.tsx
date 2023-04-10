@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-import {IProduct} from '../types/types'
-import { useAppSelector, useAppDispatch } from '../hooks/redux';
-import { productSlice } from '../store/reducer/products';
+import {IProduct} from '../../types/types'
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { productSlice } from '../../store/reducer/products';
 
 
 
@@ -49,7 +49,7 @@ function CatalogsProduct({products}: IProducts) {
                             <img className='product__volume-icon' src={product.volumeIcon} alt="" />{product.volume}
                         </p>
                         <Link to={'/product/' + product.id} className='product__text'>
-                            {/* <span className='product__title'>{product.brend}</span>*/}{product.title}
+                            {product.title}
                         </Link>
                         <p className='product__barcode product__description'>Штрихкод: <span>{product.barcode}</span></p>
                         <p className='product__manufacturer product__description'>Производитель: <span>{product.manufacturer}</span></p>
@@ -57,8 +57,8 @@ function CatalogsProduct({products}: IProducts) {
         
                         <div className="product__row">
                             <p className="product__price">{product.price} {product.currency}</p>
-                            <button onClick={addOrder} datatype={String(product.id)} className='product__order-btn'>
-                                В КОРЗИНУ <img onClick={addOrder} datatype={String(product.id)} className='product__order-icon' src={require('../assets/images/simple-line-icons_basket (1).svg').default} alt="" />
+                            <button data-testid="addOrder" onClick={addOrder} datatype={String(product.id)} className='product__order-btn'>
+                                В КОРЗИНУ <img onClick={addOrder} datatype={String(product.id)} className='product__order-icon' src='/assets/images/simple-line-icons_basket (1).svg' alt="" />
                             </button>
                         </div>
                     </article>

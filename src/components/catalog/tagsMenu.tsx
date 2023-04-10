@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '../hooks/redux';
-import { productSlice } from '../store/reducer/products';
-import jsontags from '../db/tags.json'
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { productSlice } from '../../store/reducer/products';
+import jsontags from '../../db/tags.json'
 
 function TagsMenu() {
 
@@ -31,8 +31,10 @@ function TagsMenu() {
             <li key={tag.id} className='tags-menu__item'>
                 <button
                     dangerouslySetInnerHTML={{__html: tag.name}}
-                    datatype={String(tag.id)} onClick={toggleTagFilter}
+                    datatype={String(tag.id)}
+                    onClick={toggleTagFilter}
                     className={(filterByTags.find((el) => tag.id === el.id)) ? 'tags-menu__tag tags-menu__tag-active' : 'tags-menu__tag'}
+                    data-testid="tag"
                 ></button>
             </li>
             )}

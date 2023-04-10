@@ -25,3 +25,9 @@ export interface ITags {
     id: number;
     name: string;
 }
+
+export interface Ipage {
+    name: string;
+    route: string;
+    isActive: boolean
+}
