@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { screen, render, fireEvent, cleanup, queryByTestId } from "@testing-library/react";
+import { screen, render, fireEvent, cleanup } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { setupStore } from "../store";
 import { MemoryRouter } from 'react-router-dom';
@@ -8,7 +8,7 @@ import MainLayout from '../layout/mainLayout';
 
 const store = setupStore()
 
-describe('integration tests', () => {
+describe('general app tests', () => {
     it('order function', () => {
         render(<Provider store={store}><MemoryRouter initialEntries={['/product/1']}><MainLayout /></MemoryRouter></Provider>)
         const order = screen.getByTestId('order')
