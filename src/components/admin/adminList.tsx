@@ -26,6 +26,28 @@ function AdminList() {
     dispatch(setProducts(filtredArray));
   }
 
+  function addProduct() {
+    const array = Array.from(products) as IProduct[];
+    const id = Math.round(Math.random() * 1000000);
+    array.push({
+      id: id,
+      imgUrl: "",
+      volume: "",
+      volumeIcon: "/assets/images/Vector (6).svg",
+      title: "",
+      description: "",
+      barcode: `${id}`,
+      manufacturer: "",
+      brend: "",
+      price: "0",
+      currency: "₸",
+      tags: [],
+      brand: [],
+      inStock: false,
+    });
+    dispatch(setProducts(array));
+  }
+
   return (
     <section className="container">
       <ul className="admin-list">
@@ -88,6 +110,47 @@ function AdminList() {
                   onInput={Input}
                 />
               </div>
+              <div className="admin-product__input-group">
+                <label className="admin-product__label" htmlFor="volume">
+                  Обьем:
+                </label>
+                <input
+                  className="admin-product__input"
+                  id="volume"
+                  name="volume"
+                  type="number"
+                  defaultValue={order.volume}
+                  datatype={`${order.id}`}
+                  onInput={Input}
+                />
+              </div>
+              <div className="admin-product__input-group">
+                <label className="admin-product__label" htmlFor="volume">
+                  Описание:
+                </label>
+                <textarea
+                  className="admin-product__textarea"
+                  id="description"
+                  name="description"
+                  defaultValue={order.description}
+                  datatype={`${order.id}`}
+                  onInput={Input}
+                />
+              </div>
+              <div className="admin-product__row">
+                <label className="admin-product__label" htmlFor="inStock">
+                  Наличие:
+                </label>
+                <input
+                  className="admin-product__checkbox"
+                  id="inStock"
+                  name="inStock"
+                  type="checkbox"
+                  defaultChecked={order.inStock}
+                  datatype={`${order.id}`}
+                  onInput={Input}
+                />
+              </div>
               <button
                 datatype={`${order.id}`}
                 onClick={deleteProduct}
@@ -99,6 +162,9 @@ function AdminList() {
           </li>
         ))}
       </ul>
+      <button onClick={addProduct} className="app-btn add-product">
+        Добавить продукт
+      </button>
     </section>
   );
 }

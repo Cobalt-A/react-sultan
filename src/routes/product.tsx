@@ -1,16 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Breadcrumbs from "../sections/general/breadcrumbs";
 import { IProduct } from "../types/types";
-import jsonproduct from "../db/products.json";
+import { useAppSelector } from "../hooks/redux";
 import jsontags from "../db/tags.json";
+import Breadcrumbs from "../sections/general/breadcrumbs";
 import ProductTop from "../sections/product/productTop";
 import ProductMain from "../sections/product/productMain";
 
 function Product() {
   const { id } = useParams();
+  const { products } = useAppSelector((state) => state.productReducer);
 
-  const product = (jsonproduct as unknown as IProduct[]).filter(
+  const product = (products as unknown as IProduct[]).filter(
     (el) => el.id === Number(id)
   )[0];
   const productTags = jsontags.filter(

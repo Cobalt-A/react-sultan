@@ -1,9 +1,8 @@
-
 [
     {
         "id": 1,
         "imgUrl": "/assets/images/image 21.png",
-        "volume": "450 мл",
+        "volume": "450",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "мытья посуды Crystal",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -12,14 +11,18 @@
         "brend": "AOS",
         "price": "48.76",
         "currency": "₸",
-        "tags": [1,2,3],
+        "tags": [
+            1,
+            2,
+            3
+        ],
         "brand": 1,
         "inStock": true
     },
     {
         "id": 2,
         "imgUrl": "/assets/images/image 21.png",
-        "volume": "180 мл",
+        "volume": "180",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "средство для посуды",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -28,14 +31,20 @@
         "brend": "AOS",
         "price": "44.76",
         "currency": "₸",
-        "tags": [2,3,4,5,6],
+        "tags": [
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
         "brand": 2,
         "inStock": true
     },
     {
         "id": 3,
         "imgUrl": "/assets/images/image 21.png",
-        "volume": "280 мл",
+        "volume": "280",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "для мытья Crystal",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -44,14 +53,18 @@
         "brend": "AOS",
         "price": "69.76",
         "currency": "₸",
-        "tags": [9,10,11],
+        "tags": [
+            9,
+            10,
+            11
+        ],
         "brand": 4,
         "inStock": true
     },
     {
         "id": 4,
         "imgUrl": "/assets/images/image 21-1.png",
-        "volume": "350 мл",
+        "volume": "350",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Автмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -60,14 +73,18 @@
         "brend": "ARIEL",
         "price": "29.76",
         "currency": "₸",
-        "tags": [9,10,11],
+        "tags": [
+            9,
+            10,
+            11
+        ],
         "brand": 5,
         "inStock": true
     },
     {
         "id": 5,
         "imgUrl": "/assets/images/image 21-1.png",
-        "volume": "550 мл",
+        "volume": "550",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Liquid Capsules Горный родник",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -76,14 +93,18 @@
         "brend": "ARIEL",
         "price": "619.76",
         "currency": "₸",
-        "tags": [9,10,11],
+        "tags": [
+            9,
+            10,
+            11
+        ],
         "brand": 6,
         "inStock": true
     },
     {
         "id": 6,
         "imgUrl": "/assets/images/image 21-1.png",
-        "volume": "650 мл",
+        "volume": "650",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Автмат Гель",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -92,14 +113,20 @@
         "brend": "ARIEL",
         "price": "659.76",
         "currency": "₸",
-        "tags": [6,8,9,10,11],
+        "tags": [
+            6,
+            8,
+            9,
+            10,
+            11
+        ],
         "brand": 1,
         "inStock": true
     },
     {
         "id": 7,
         "imgUrl": "/assets/images/image 21-1.png",
-        "volume": "750 мл",
+        "volume": "750",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Гель СМС жидкое в растворимых капсулах",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -108,14 +135,20 @@
         "brend": "ARIEL",
         "price": "689.76",
         "currency": "₸",
-        "tags": [6,7,9,10,11],
+        "tags": [
+            6,
+            7,
+            9,
+            10,
+            11
+        ],
         "brand": 6,
         "inStock": true
     },
     {
         "id": 8,
         "imgUrl": "/assets/images/image 21-2.png",
-        "volume": "450 мл",
+        "volume": "450",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Порошок стиральный Автомат 100 пятен COMPACT",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -124,14 +157,20 @@
         "brend": "BIMAX",
         "price": "169.76",
         "currency": "₸",
-        "tags": [6,8,9,10,11],
+        "tags": [
+            6,
+            8,
+            9,
+            10,
+            11
+        ],
         "brand": 5,
         "inStock": true
     },
     {
         "id": 9,
         "imgUrl": "/assets/images/image 21-2.png",
-        "volume": "150 мл",
+        "volume": "150",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Порошок стиральный",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -140,14 +179,20 @@
         "brend": "BIMAX",
         "price": "49.76",
         "currency": "₸",
-        "tags": [6,8,9,10,11],
+        "tags": [
+            6,
+            8,
+            9,
+            10,
+            11
+        ],
         "brand": 4,
         "inStock": true
     },
     {
         "id": 10,
         "imgUrl": "/assets/images/image 21-2.png",
-        "volume": "250 мл",
+        "volume": "250",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Автомат 100 пятен COMPACT",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -156,14 +201,17 @@
         "brend": "BIMAX",
         "price": "68.76",
         "currency": "₸",
-        "tags": [10,11],
+        "tags": [
+            10,
+            11
+        ],
         "brand": 3,
         "inStock": true
     },
     {
         "id": 11,
         "imgUrl": "/assets/images/image 21-2.png",
-        "volume": "850 мл",
+        "volume": "850",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Порошок стиральный COMPACT",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -172,14 +220,17 @@
         "brend": "BIMAX",
         "price": "56.76",
         "currency": "₸",
-        "tags": [10,11],
+        "tags": [
+            10,
+            11
+        ],
         "brand": 6,
         "inStock": true
     },
     {
         "id": 12,
         "imgUrl": "/assets/images/image 21-3.png",
-        "volume": "950 мл",
+        "volume": "950",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Ср-во для мытья посуды Апельсин+мята",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -188,14 +239,17 @@
         "brend": "AOS",
         "price": "85.76",
         "currency": "₸",
-        "tags": [10,11],
+        "tags": [
+            10,
+            11
+        ],
         "brand": 6,
         "inStock": true
     },
     {
         "id": 13,
         "imgUrl": "/assets/images/image 21-3.png",
-        "volume": "450 мл",
+        "volume": "450",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Ср-во для мытья",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -204,14 +258,18 @@
         "brend": "AOS",
         "price": "69.76",
         "currency": "₸",
-        "tags": [1,2,3],
+        "tags": [
+            1,
+            2,
+            3
+        ],
         "brand": 5,
         "inStock": true
     },
     {
         "id": 14,
         "imgUrl": "/assets/images/image 21-3.png",
-        "volume": "250 мл",
+        "volume": "250",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "посуды Апельсин+мята",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -220,14 +278,20 @@
         "brend": "AOS",
         "price": "38.76",
         "currency": "₸",
-        "tags": [1,2,3,4,5],
+        "tags": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
         "brand": 2,
         "inStock": true
     },
     {
         "id": 15,
         "imgUrl": "/assets/images/image 21-4.png",
-        "volume": "350 мл",
+        "volume": "350",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Экологичное туалетное мыло. Литсея и бергамот",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -236,14 +300,18 @@
         "brend": "AOS",
         "price": "88.76",
         "currency": "₸",
-        "tags": [3,4,5],
+        "tags": [
+            3,
+            4,
+            5
+        ],
         "brand": 1,
         "inStock": true
     },
     {
         "id": 16,
         "imgUrl": "/assets/images/image 21-4.png",
-        "volume": "550 мл",
+        "volume": "550",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "Литсея и бергамот",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -252,14 +320,18 @@
         "brend": "AOS",
         "price": "33.76",
         "currency": "₸",
-        "tags": [3,4,5],
+        "tags": [
+            3,
+            4,
+            5
+        ],
         "brand": 2,
         "inStock": true
     },
     {
         "id": 17,
         "imgUrl": "/assets/images/image 21-4.png",
-        "volume": "688 мл",
+        "volume": "688",
         "volumeIcon": "/assets/images/Vector (6).svg",
         "title": "туалетное мыло",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",
@@ -268,7 +340,11 @@
         "brend": "AOS",
         "price": "55.76",
         "currency": "₸",
-        "tags": [3,4,5],
+        "tags": [
+            3,
+            4,
+            5
+        ],
         "brand": 3,
         "inStock": true
     }

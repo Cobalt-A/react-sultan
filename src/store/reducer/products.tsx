@@ -44,8 +44,10 @@ export const productSlice = createSlice({
       const product = state.products.find(
         (el: any) => el.id === Number(action.payload.id)
       );
-      product[action.payload.key] = action.payload.value;
-      localStorage.setItem("products", state.products);
+      if (product) {
+        product[action.payload.key] = action.payload.value;
+        localStorage.setItem("products", state.products);
+      }
     },
     setFilterByPrice(state, action) {
       state.filterByPrice = action.payload;
