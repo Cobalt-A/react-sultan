@@ -40,6 +40,7 @@ function Order() {
         pages={[
           { name: "Каталог", route: "/", isActive: false },
           { name: "Корзина", route: "/order", isActive: true },
+          { name: "Админ панель", route: "/admin", isActive: false },
         ]}
       />
 

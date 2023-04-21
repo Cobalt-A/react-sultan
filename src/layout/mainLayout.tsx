@@ -13,7 +13,6 @@ function MainLayout() {
   return (
     <div id="layout">
       <Header />
-
       <Routes>
         <Route path="/" element={<Catalog />} />
         <Route path="/order" element={<Order />} />
